@@ -89,7 +89,7 @@ class Drawer:
                     "special"
                 )
             date_title = f"{date_title} {day_tracks} {self.poster.units}"
-        rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=color)
+        rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=color,rx=0.4, ry=0.4)
         if with_animation:
             rect = self.__add_animation(rect, key_times, animate_index)
         rect.set_desc(title=date_title)
@@ -125,7 +125,7 @@ class Drawer:
                     continue
                 dom = dom_tuple[index]
                 color = self.make_color(length_range, num)
-                rect = dr.rect((rect_x, rect_y), dom, fill=color)
+                rect = dr.rect((rect_x, rect_y), dom, fill=color,rx=0.4, ry=0.4)
                 date_title = f"{date_title} {num} for {_type}"
                 if with_animation:
                     rect = self.__add_animation(rect, key_times, animate_index)
