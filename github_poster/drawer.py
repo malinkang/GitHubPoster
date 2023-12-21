@@ -81,7 +81,7 @@ class Drawer:
         key_times,
         animate_index,
     ):
-        color = DEFAULT_DOM_COLOR
+        color = self.poster.colors.get("dom")
         if day_tracks:
             color = self.make_color(self.poster.length_range_by_date, day_tracks)
             if day_tracks >= self.poster.special_number["special_number1"]:

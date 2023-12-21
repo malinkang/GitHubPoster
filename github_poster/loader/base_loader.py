@@ -121,6 +121,14 @@ class BaseLoader(ABC):
             help='Color of tracks (default: "#4DD2FF").',
         )
         group.add_argument(
+            "--dom-color",
+            dest="dom_color",
+            metavar="COLOR",
+            type=str,
+            default="#EBEDF0",
+            help='Color of tracks (default: "#EBEDF0").',
+        )
+        group.add_argument(
             "--text-color",
             dest="text_color",
             metavar="COLOR",

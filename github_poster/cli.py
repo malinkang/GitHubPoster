@@ -49,6 +49,7 @@ def run():
         "special": args.special_color1,
         "special2": args.special_color2 or args.special_color,
         "text": args.text_color,
+        "dom": args.dom_color,
     }
 
     # if special color (Stand with Ukraine) change the color
