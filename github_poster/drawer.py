@@ -19,9 +19,9 @@ class Drawer:
 
     def __init__(self, p):
         self.poster = p
-        self.year_size = 200 * 4.0 / 80.0
+        self.year_size = 80 * 3.0 / 80.0
         self.year_style = f"font-size:{self.year_size}px; font-family:Arial;"
-        self.year_length_style = f"font-size:{110 * 3.0 / 80.0}px; font-family:Arial;"
+        self.year_length_style = f"font-size:{80 * 3.0 / 80.0}px; font-family:Arial;"
         self.month_names_style = "font-size:2.5px; font-family:Arial"
 
     @property
@@ -158,7 +158,7 @@ class Drawer:
         year_length = str(int(year_length)) + f" {year_units}"
         dr.add(
             dr.text(
-                f"{year}" if _type is None else f"{_type}",
+                f"{year}: {year_length}" if _type is None else f"{_type}",
                 insert=offset.tuple(),
                 fill=self.poster.colors["text"],
                 dominant_baseline="hanging",
@@ -166,23 +166,23 @@ class Drawer:
             )
         )
 
-        if not self.poster.is_multiple_type:
-            dr.add(
-                dr.text(
-                    f"{year_length}",
-                    insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
-                    fill=self.poster.colors["text"],
-                    dominant_baseline="hanging",
-                    style=self.year_length_style,
-                )
-            )
+        # if not self.poster.is_multiple_type:
+        #     dr.add(
+        #         dr.text(
+        #             f"{year_length}",
+        #             insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
+        #             fill=self.poster.colors["text"],
+        #             dominant_baseline="hanging",
+        #             style=self.year_length_style,
+        #         )
+        #     )
         # add month name up to the poster one by one
         # because of svg text auto trim the spaces.
         for num, name in enumerate(MONTH_NAMES):
             dr.add(
                 dr.text(
                     f"{name}",
-                    insert=(offset.tuple()[0] + 15.5 * num, offset.tuple()[1] + 14),
+                    insert=(offset.tuple()[0] + 15.5 * num, offset.tuple()[1] + self.year_size +4),
                     fill=self.poster.colors["text"],
                     style=self.month_names_style,
                 )

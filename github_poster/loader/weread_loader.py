@@ -38,18 +38,10 @@ class WereadLoader(BaseLoader):
 
     def make_track_dict(self):
         api_data = self.get_api_data()
-        month_data = api_data["datas"]
-        for m in month_data:
-            m_start_date = pendulum.from_timestamp(
-                m["baseTimestamp"], tz=self.time_zone
-            )
-            read_time_list = m["timeMeta"]["readTimeList"]
-            if not sum(read_time_list):
-                continue
-            m_end_date = m_start_date.end_of("month")
-            m_date_list = list(pendulum.interval(m_start_date, m_end_date))
-            for k, v in zip(m_date_list, read_time_list):
-                self.number_by_date_dict[k.to_date_string()] = round(v / 60.0, 2)
+        readTimes = dict(sorted(api_data["readTimes"].items(), reverse=True))
+        for k, v in readTimes.items():
+            k = pendulum.from_timestamp(int(k), tz=self.time_zone)
+            self.number_by_date_dict[k.to_date_string()] = round(v / 60.0, 2)
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 

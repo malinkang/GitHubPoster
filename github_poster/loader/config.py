@@ -121,7 +121,8 @@ NOTION_API_VERSION = "2021-08-16"
 # Weread
 WEREAD_BASE_URL = "https://weread.qq.com/"
 WEREAD_HISTORY_URL = (
-    "https://i.weread.qq.com/readdetail?baseTimestamp=0&count=32&type=1"
+    # "https://i.weread.qq.com/readdetail?baseTimestamp=0&count=32&type=1"
+    "https://i.weread.qq.com/readdata/summary?synckey=0"
 )
 
 # COVID
