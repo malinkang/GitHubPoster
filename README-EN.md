@@ -48,7 +48,7 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 ## pip install
 
 ```
-pip3 install -U 'github_poster[all]'
+pip3 install -U 'github_heatmap[all]'
 ```
 
 ## Install(Python3.6+)
@@ -73,7 +73,7 @@ Different types are used as specified below:
 - `--without-type-name`: Support for hiding the name of the build type in the title
 - `---stand-with-ukraine`
 
-Other parameters can be found with `python3 -m github_poster <type> --help`
+Other parameters can be found with `python3 -m github_heatmap <type> --help`
 
 
 ### GPX
@@ -84,9 +84,9 @@ Other parameters can be found with `python3 -m github_poster <type> --help`
 
 mv gpx files to `GPX_FOLDER` then run the code
 ```
-python3 -m github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
+python3 -m github_heatmap gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 or pip
-github_poster github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
+github_heatmap github_heatmap gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -148,9 +148,9 @@ curl -X POST https://www.strava.com/oauth/token \
 ![get_refresch_token](https://raw.githubusercontent.com/shaonianche/gallery/master/running_page/get_refresch_token.png)
 
 ```
-python3 -m github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
+python3 -m github_heatmap --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 or pip
-github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
+github_heatmap --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -163,9 +163,9 @@ github_poster --strava_client_id  ${client_id} --strava_client_secret ${client_s
 From APP`(Nintendo Switch Parent Controls)` using `mitmproxy` to get the `session_token` and `devide _id`
 
 ```
-python3 -m github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+python3 -m github_heatmap ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 or pip
-github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+github_heatmap ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -184,9 +184,9 @@ Find your `duolingo id`, F12 from `XHR`
 
 
 ```
-python3 -m github_poster duolingo --duolingo_user_name ${duolingo_user_name}  --duolingo_jwt ${duolingo_jwt}  --year 2015-2021
+python3 -m github_heatmap duolingo --duolingo_user_name ${duolingo_user_name}  --duolingo_jwt ${duolingo_jwt}  --year 2015-2021
 or
-github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
+github_heatmap duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
 ```
 </details>
 
@@ -199,9 +199,9 @@ github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt
 Like my [issue](https://github.com/yihong0618/2021/issues/5)
 
 ```
-	python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+	python3 -m github_heatmap issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 or
-github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
+github_heatmap issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
 ```
 </details>
 
@@ -214,9 +214,9 @@ github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --to
 Find your `LeetCode Cookie`
 
 ```
-python3 -m github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
+python3 -m github_heatmap leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 or
-github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
+github_heatmap leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 ```
 
 </details>
@@ -231,9 +231,9 @@ github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 Use Google [History Takeout](https://takeout.google.com/settings/takeout) to download `YouTube` history data，choose `json` format，mv `watch-history.json` to `IN-FOLDER` then run the code
 
 ```
-python3 -m github_poster youtube --year 2015-2021
+python3 -m github_heatmap youtube --year 2015-2021
 or
-github_poster youtube --year 2015-2021
+github_heatmap youtube --year 2015-2021
 ```
 </details>
 
@@ -246,9 +246,9 @@ github_poster youtube --year 2015-2021
 Find your `Bilibili (XHR) cookie`
 
 ```
-python3 -m github_poster bilibili --cookie "${bilibili-cookie}"
+python3 -m github_heatmap bilibili --cookie "${bilibili-cookie}"
 or
-github_poster bilibili --cookie "${bilibili-cookie}"
+github_heatmap bilibili --cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -261,9 +261,9 @@ github_poster bilibili --cookie "${bilibili-cookie}"
 Get your `GitHub Name` (in the url)
 
 ```
-python3 -m github_poster github --github_user_name "${github_user_name}" --with-skyline
+python3 -m github_heatmap github --github_user_name "${github_user_name}" --with-skyline
 or
-github_poster github --github_user_name "${github_user_name}" --with-skyline
+github_heatmap github --github_user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -276,17 +276,17 @@ github_poster github --github_user_name "${github_user_name}" --with-skyline
 Get your `GitLab Name` (in the url)
 
 ```
-python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}"
+python3 -m github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}"
 or
-github_poster gitlab --gialab_user_name "${gitlab_user_name}"
+github_heatmap gitlab --gialab_user_name "${gitlab_user_name}"
 ```
 
 For self-managed `GitLab`, specify the base url of your instance. You should use `_gitlab_session` from Cookies if sign in required.
 s
 ```
-python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+python3 -m github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 or
-github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -300,9 +300,9 @@ github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https:
 Find your [Amazon](https://www.amazon.com/) Cookie
 
 ```
-python3 -m github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
+python3 -m github_heatmap kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 or
-github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
+github_heatmap kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -316,9 +316,9 @@ github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 Find your own `WakaTime API Key` at: [WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```
-python -m github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+python -m github_heatmap wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 or
-github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+github_heatmap wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -336,9 +336,9 @@ more info: https://docs.opendota.com/#section/Introduction
 
 
 ```
-python -m github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
+python -m github_heatmap dota2 --dota2_id="your dota2 id" --year 2017-2018
 or
-github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
+github_heatmap dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
 </details>
@@ -357,9 +357,9 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 2. copy this `refresh_token` and use it in GitHub Secrets or in command line
 
 ```
-python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+python3 -m github_heatmap nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
 or
-github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+github_heatmap nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
 ```
 
 </details>
@@ -385,9 +385,9 @@ Note：The database need a property which type is `Date`, the value of it will b
 The name of the date property should be set as option `prop_name`'s value，default value is `Datetime`
 
 ```
-python3 -m github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+python3 -m github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
 or
-github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
 ```
 
 </details>
@@ -400,9 +400,9 @@ github_poster notion --notion_token="your notion_token" --database_id="your data
 需要填写 Garmin 的账号和密码
 
 ```
-python3 -m github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+python3 -m github_heatmap garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
 or
-github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+github_heatmap garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
 ```
 </details>
 
@@ -415,9 +415,9 @@ github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_wo
 Need to add your Forest email and password
 
 ```
-python3 -m github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
+python3 -m github_heatmap forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
 or
-github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
+github_heatmap forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
 ```
 </details>
 
@@ -430,9 +430,9 @@ github_poster forest --forest_email ${user_name} --forest_password ${pass_word} 
 make sure your json file format is like `data.json` in examples
 
 ```
-python3 -m github_poster json --json_file "your json data file" --year 2019-2021 --me PythonHunter
+python3 -m github_heatmap json --json_file "your json data file" --year 2019-2021 --me PythonHunter
 or
-github_poster json --json_file "your json data file" --year 2019-2021 --me PythonHunter
+github_heatmap json --json_file "your json data file" --year 2019-2021 --me PythonHunter
 ```
 
 </details>
@@ -446,9 +446,9 @@ github_poster json --json_file "your json data file" --year 2019-2021 --me Pytho
 support multiple types
 
 ```
-python3 -m github_poster multiple  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+python3 -m github_heatmap multiple  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 or
-github_poster multiple  --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+github_heatmap multiple  --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 ```
 
 </details>
@@ -462,9 +462,9 @@ github_poster multiple  --types "github, strava" --github_user_name "github user
 support summary types
 
 ```
-python3 -m github_poster summary  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+python3 -m github_heatmap summary  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 or
-github_poster summary  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+github_heatmap summary  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 ```
 </details>
 
@@ -480,9 +480,9 @@ eg. in the link `https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`,
 ps. only get the data for the last year
 
 ```
-python3 -m github_poster jike --jike_cookie "your jike cookie" --jike_user_id 'your jike user id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
+python3 -m github_heatmap jike --jike_cookie "your jike cookie" --jike_user_id 'your jike user id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 or
-github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike user id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
+github_heatmap jike --jike_cookie "your jike cookie" --jike_user_id "your jike user id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
 
 Option argument `count_type`, you can specify statistics type:
@@ -506,9 +506,9 @@ Get your token please find on [Todoist Developer Docs](https://developer.todoist
 <br>
 
 ```
-python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+python3 -m github_heatmap todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
 or
-github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+github_heatmap todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
 ```
 </details>
 
@@ -521,9 +521,9 @@ For some reason, make sure your password only has letters and numbers, otherwise
 <br>
 
 ```
-python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+python3 -m github_heatmap openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
 or
-github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+github_heatmap openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
 ```
 </details>
 
@@ -540,18 +540,18 @@ increment mode (default）is good for daily update. iOS Shortcut can be used to 
 Read [this repo](https://github.com/yihong0618/iBeats) for more details.
 <br>
 ```
-python3 -m github_poster apple_health --date <date-str> --value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
+python3 -m github_heatmap apple_health --date <date-str> --value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
 or
-github_poster apple_health --appple_health_date <date-str> --apple_health_value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
+github_heatmap apple_health --appple_health_date <date-str> --apple_health_value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
 
 backfill mode is good for dumping all data at once.
 Open the Health App, click on the avatar on the top right corner, select "Export All Health Data" on the bottom, copy the zip file to `IN-FOLDER` and unzip. You will get a `apple_health_export` folder. Then run:
 <br>
 ```
-python3 -m github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
+python3 -m github_heatmap apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 or
-github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
+github_heatmap apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
 
 ### ChatGPT
@@ -563,9 +563,9 @@ github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple
 Copy the conversations.json from ChatGPT's official export history to `IN-FOLDER`, then run (renamed to chatgpt-history.json)
 
 ```
-python3 -m github_poster chatgpt 
+python3 -m github_heatmap chatgpt 
 or
-github_poster chatgpt --me yihong0618
+github_heatmap chatgpt --me yihong0618
 ```
 </details>
 
@@ -582,7 +582,7 @@ An access token is needed, which can be obtained from [NeoDB's developer page](h
 There are to parameters for neodb module. `neodb_token`` is the token you get from [NeoDB's developer page](https://neodb.social/developer), `mark_type`` is the type of marks you want to import, which can be one of `complete`, `wishlist` and `progress`.
 
 ```
-python3 -m github_poster neodb --neodb_token <token> --mark_type <complete, wishlist, progress, all> --me "your name"
+python3 -m github_heatmap neodb --neodb_token <token> --mark_type <complete, wishlist, progress, all> --me "your name"
 ```
 
 Moreover, you can choose `all` as `mark_type` to import all marks.

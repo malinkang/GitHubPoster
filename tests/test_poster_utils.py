@@ -1,4 +1,4 @@
-from github_poster.utils import interpolate_color, make_key_times, parse_years
+from github_heatmap.utils import interpolate_color, make_key_times, parse_years
 
 
 def test_interpolate_color():

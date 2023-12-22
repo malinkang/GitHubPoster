@@ -60,7 +60,7 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 ## pip 安装
 
 ```
-pip3 install -U 'github_poster[all]'
+pip3 install -U 'github_heatmap[all]'
 ```
 
 ## 安装(Python3.6+)
@@ -86,7 +86,7 @@ pip3 install -r requirements.txt
 - `--is-circular`: 支持 circular svg 配合动画
 - `--without-type-name`: 支持隐藏标题中生成类型的名称
 
-其它参数可以见 `python3 -m github_poster <type> --help`
+其它参数可以见 `python3 -m github_heatmap <type> --help`
 
 ### GPX
 
@@ -96,9 +96,9 @@ pip3 install -r requirements.txt
 
 把其它软件生成的(like running_page) gpx files 拷贝到 `GPX_FOLDER` 之后运行，或指定文件夹如我的文件夹是 `~/blog/GPX_OUT/`
 ```
-python3 -m github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
+python3 -m github_heatmap gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 or pip
-github_poster gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
+github_heatmap gpx --gpx_dir ~/blog/GPX_OUT/ --year 2013-2021
 ```
 </details>
 
@@ -153,9 +153,9 @@ curl -X POST https://www.strava.com/oauth/token \
 7. 同步数据至 `Strava`
 在项目根目录执行：
 ```
-python3 -m github_poster strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
+python3 -m github_heatmap strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 or pip
-github_poster strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
+github_heatmap strava --strava_client_id  ${client_id} --strava_client_secret ${client_secret} --strava_refresh_token ${refresh_token} --year 2012-2021
 ```
 </details>
 
@@ -168,9 +168,9 @@ github_poster strava --strava_client_id  ${client_id} --strava_client_secret ${c
 需要下载 `家长控制那个 APP(Nintendo Switch Parent Controls)` 进行抓包（可以使用 mitmproxy 等抓包软件）
 
 ```
-python3 -m github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+python3 -m github_heatmap ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 or pip
-github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
+github_heatmap ns --ns_session_token ${session_token} --ns_device_id ${device_id} --year 2020-2021
 ```
 </details>
 
@@ -183,9 +183,9 @@ github_poster ns --ns_session_token ${session_token} --ns_device_id ${device_id}
 需要填写开心词场的账号和密码
 
 ```
-python3 -m github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+python3 -m github_heatmap cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
 or
-github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
+github_heatmap cichang --cichang_user_name ${user_name} --cichang_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618
 ```
 </details>
 
@@ -200,9 +200,9 @@ github_poster cichang --cichang_user_name ${user_name} --cichang_password ${pass
 
 
 ```
-python3 -m github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
+python3 -m github_heatmap duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_jwt ${duolingo_jwt} --year 2015-2021
 or
-github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_duolingo_jwt ${duolingo_jwt} --year 2015-2021
+github_heatmap duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_duolingo_jwt ${duolingo_jwt} --year 2015-2021
 ```
 </details>
 
@@ -215,9 +215,9 @@ github_poster duolingo --duolingo_user_name ${duolingo_user_name} --duolingo_duo
 ![image](https://user-images.githubusercontent.com/15976103/116340351-a02ac500-a811-11eb-938f-72ff141e4942.png)
 
 ```
-python3 -m github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
+python3 -m github_heatmap shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
 or
-github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
+github_heatmap shanbay --shanbay_user_name ${user_name} --year 2012-2021 --special-color1 '#009688' --special-color2 '#007BFF' --track-color '#ADD8E6'
 ```
 
 </details>
@@ -233,9 +233,9 @@ github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --specia
 
 
 ```
-python3 -m github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
+python3 -m github_heatmap bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
 or
-github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
+github_heatmap bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
 ```
 </details>
 
@@ -250,9 +250,9 @@ github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
 > 2. 内容的第一行必须是数字，因为是取的第一行的数字来进行计数的
 
 ```
-python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
+python3 -m github_heatmap issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
 or
-github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
+github_heatmap issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
 ```
 </details>
 
@@ -265,16 +265,16 @@ github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --gi
 需要找到你 `LeetCode` 的 `cookie`
 
 ```
-python3 -m github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
+python3 -m github_heatmap leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 or
-github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
+github_heatmap leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021
 ```
 如果使用的是 leetcode-cn（leetcode 中国需要加上参数）--cn
 
 ```
-python3 -m github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --cn
+python3 -m github_heatmap leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --cn
 or
-github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --cn
+github_heatmap leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --cn
 ```
 </details>
 
@@ -288,9 +288,9 @@ github_poster leetcode --leetcode_cookie ${leetcode_cookie} --year 2019-2021 --c
 利用 Google 的[历史下载](https://takeout.google.com/settings/takeout)下载 `YouTube` 的历史数据，选择 `json` 格式，将 `watch-history.json` 拷贝到 `IN-FOLDER` 然后运行
 
 ```
-python3 -m github_poster youtube --year 2015-2021
+python3 -m github_heatmap youtube --year 2015-2021
 or
-github_poster youtube --year 2015-2021
+github_heatmap youtube --year 2015-2021
 ```
 </details>
 
@@ -303,9 +303,9 @@ github_poster youtube --year 2015-2021
 需要找到你 `Bilibili (XHR)` 的 `cookie`
 
 ```
-python3 -m github_poster bilibili --bilibili_cookie "${bilibili-cookie}"
+python3 -m github_heatmap bilibili --bilibili_cookie "${bilibili-cookie}"
 or
-github_poster bilibili --bilibili_cookie "${bilibili-cookie}"
+github_heatmap bilibili --bilibili_cookie "${bilibili-cookie}"
 ```
 </details>
 
@@ -318,9 +318,9 @@ github_poster bilibili --bilibili_cookie "${bilibili-cookie}"
 需要找到你 `GitHub Name` (url 后面那个)
 
 ```
-python3 -m github_poster github --github_user_name "${github_user_name}" --with-skyline
+python3 -m github_heatmap github --github_user_name "${github_user_name}" --with-skyline
 or
-github_poster github --github_user_name "${github_user_name}" --with-skyline
+github_heatmap github --github_user_name "${github_user_name}" --with-skyline
 ```
 </details>
 
@@ -333,17 +333,17 @@ github_poster github --github_user_name "${github_user_name}" --with-skyline
 需要找到你 `GitLab Name` (url 后面那个)
 
 ```
-python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}"
+python3 -m github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}"
 or
-github_poster gitlab --gitlab_user_name "${gitlab_user_name}"
+github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}"
 ```
 
 如果是自己搭建的 `GitLab`，可以指定 `GitLab` 的 URL，以及登录 `GitLab` 后得到的 `_gitlab_session` 这个 `cookie`(如果需要登录的话)
 
 ```
-python3 -m github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+python3 -m github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 or
-github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
+github_heatmap gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https://your-gitlab.com" --session "${gitlab_session}"
 ```
 
 </details>
@@ -357,9 +357,9 @@ github_poster gitlab --gitlab_user_name "${gitlab_user_name}" --base_url "https:
 在亚马逊网站上需要找到你 [Amazon-CN](https://www.amazon.cn/) (XHR) Cookie
 
 ```
-python3 -m github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
+python3 -m github_heatmap kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 or
-github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
+github_heatmap kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 ```
 
 </details>
@@ -373,9 +373,9 @@ github_poster kindle --kindle_cookie ${kindle_cookie} --cn --year 2018-2021
 在 WakaTime 官网获取你的 WakaTime API Key：[WakaTime API Key](https://wakatime.com/settings/api-key)
 
 ```
-python3 -m github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+python3 -m github_heatmap wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 or
-github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
+github_heatmap wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 ```
 
 </details>
@@ -392,9 +392,9 @@ github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 更多接口信息：https://docs.opendota.com/#section/Introduction"
 
 ```
-python3 -m github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
+python3 -m github_heatmap dota2 --dota2_id="your dota2 id" --year 2017-2018
 or
-github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
+github_heatmap dota2 --dota2_id="your dota2 id" --year 2017-2018
 ```
 
 </details>
@@ -417,9 +417,9 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 2. 复制 `refresh_token`
 
 ```
-python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+python3 -m github_heatmap nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
 or
-github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
+github_heatmap nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
 ```
 
 </details>
@@ -444,9 +444,9 @@ github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-20
 注：数据库需要添加一个属性类型为 `Date` 的日期属性，该属性的值将作为生成 Poster 的日期数据使用。在生成时需将该日期属性的名称作为选项 `prop_name` 的值，默认值为 `Datetime`
 
 ```
-python3 -m github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+python3 -m github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
 or
-github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
 ```
 
 </details>
@@ -458,9 +458,9 @@ github_poster notion --notion_token="your notion_token" --database_id="your data
 需要填写 Garmin 的账号和密码
 
 ```
-python3 -m github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+python3 -m github_heatmap garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
 or
-github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
+github_heatmap garmin --garmin_user_name ${user_name} --garmin_password ${pass_word} --year 2016-2021 --special-color1 blue --special-color2 pink --me yihong0618 --cn
 ```
 </details>
 
@@ -473,9 +473,9 @@ github_poster garmin --garmin_user_name ${user_name} --garmin_password ${pass_wo
 需要填写 Forest 的邮箱账号和密码，如果你转到了中国区，需要添加 `--cn` 参数
 
 ```
-python3 -m github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
+python3 -m github_heatmap forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
 or
-github_poster forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
+github_heatmap forest --forest_email ${user_name} --forest_password ${pass_word} --year 2016-2021 --special-color1 blue --me yihong0618
 ```
 </details>
 
@@ -488,9 +488,9 @@ github_poster forest --forest_email ${user_name} --forest_password ${pass_word} 
 make sure your json file format is like `data.json` in examples
 
 ```
-python3 -m github_poster json --json_file "your json data file" --year 2019-2021 --me PythonHunter
+python3 -m github_heatmap json --json_file "your json data file" --year 2019-2021 --me PythonHunter
 or
-github_poster json --json_file "your json data file" --year 2019-2021 --me PythonHunter
+github_heatmap json --json_file "your json data file" --year 2019-2021 --me PythonHunter
 ```
 
 </details>
@@ -505,9 +505,9 @@ github_poster json --json_file "your json data file" --year 2019-2021 --me Pytho
 多个 types 最多支持三个，参数参考上面文档
 
 ```
-python3 -m github_poster multiple  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+python3 -m github_heatmap multiple  --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 or
-github_poster multiple  --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
+github_heatmap multiple  --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
 ```
 
 </details>
@@ -521,9 +521,9 @@ github_poster multiple  --types "github, strava" --github_user_name "github user
 多个 types，参数参考上面文档
 
 ```
-python3 -m github_poster summary --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+python3 -m github_heatmap summary --types "github, strava" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 or
-github_poster summary --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
+github_heatmap summary --types "github, strava"  --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 ```
 </details>
 
@@ -546,9 +546,9 @@ ps. 只能获取最近一年的数据
 - `repost`: 动态被转发数
 
 ```
-python3 -m github_poster jike --jike_cookie "your jike cookie" --jike_user_id 'your jike user id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
+python3 -m github_heatmap jike --jike_cookie "your jike cookie" --jike_user_id 'your jike user id' --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 or
-github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike user id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
+github_heatmap jike --jike_cookie "your jike cookie" --jike_user_id "your jike user id" --year 2021 --me "your name" --with-animation --animation-time 14 --count_type 'like'
 ```
 
 </details>
@@ -568,9 +568,9 @@ How to:
 - 按F12进入开发者模式，依次点 Network -> Doc -> Headers-> cookie。复制 Cookie 字符串;
 
 ```
-python3 -m github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
+python3 -m github_heatmap weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
 or
-github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
+github_heatmap weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
 ```
 
 </details>
@@ -582,9 +582,9 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 <br>
 
 ```
-python3 -m github_poster covid --covid_area China --year 2020-2022 --me China
+python3 -m github_heatmap covid --covid_area China --year 2020-2022 --me China
 or
-github_poster covid --covid_area US --year 2020-2022 --me US
+github_heatmap covid --covid_area US --year 2020-2022 --me US
 ```
 </details>
 
@@ -600,9 +600,9 @@ Token获取请参考：[Todoist Developer Docs](https://developer.todoist.com/gu
 <br>
 
 ```
-python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+python3 -m github_heatmap todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
 or
-github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+github_heatmap todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
 ```
 </details>
 
@@ -615,9 +615,9 @@ github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" 
 <br>
 
 ```
-python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+python3 -m github_heatmap openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
 or
-github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+github_heatmap openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
 ```
 </details>
 
@@ -632,18 +632,18 @@ Loader 支持两种模式:
 increment 模式（默认）适用于每日更新，可利用 Shortcut 每日自动触发，参考 https://github.com/yihong0618/iBeats
 <br>
 ```
-python3 -m github_poster apple_health --date <date-str> --value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
+python3 -m github_heatmap apple_health --date <date-str> --value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
 or
-github_poster apple_health --appple_health_date <date-str> --apple_health_value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
+github_heatmap apple_health --appple_health_date <date-str> --apple_health_value <value> --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
 
 backfill 模式适用于一次性导入所有数据。
 打开 Health App, 点击右上方头像，选择 Export All Health Data, 将所得压缩包拷贝到 `IN-FOLDER` 后解压，会得到一个 `apple_health_export` 文件夹。之后运行:
 <br>
 ```
-python3 -m github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
+python3 -m github_heatmap apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 or
-github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
+github_heatmap apple_health --apple_health_mode backfill --year 2015-2021 --apple_health_record_type <move, exercise, stand> --me "your name"
 ```
 
 </details>
@@ -657,9 +657,9 @@ github_poster apple_health --apple_health_mode backfill --year 2015-2021 --apple
 将ChatGPT官方导出的历史记录中的conversations.json， 拷贝到 `IN-FOLDER` 然后运行(重命名为 chatgpt-history.json)
 
 ```
-python3 -m github_poster chatgpt 
+python3 -m github_heatmap chatgpt 
 or
-github_poster chatgpt --me yihong0618
+github_heatmap chatgpt --me yihong0618
 ```
 </details>
 
@@ -676,7 +676,7 @@ github_poster chatgpt --me yihong0618
 neodb 模块需要两个参数，`neodb_token` 为获取到的 token，`mark_type` 对应 NeoDB 上标注的三种分类：`complete`, `wishlist`, `progress`.
 
 ```
-python3 -m github_poster neodb --neodb_token <token> --mark_type <complete, wishlist, progress, all> --me "your name"
+python3 -m github_heatmap neodb --neodb_token <token> --mark_type <complete, wishlist, progress, all> --me "your name"
 ```
 
 特别地，`mark_type` 也可以选择 `all`, 此时会将三种分类的标注都导入。

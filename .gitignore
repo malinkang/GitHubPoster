@@ -137,6 +137,6 @@ test.py
 
 .idea/
 
-github_poster/data/*
+github_heatmap/data/*
 
 data/*

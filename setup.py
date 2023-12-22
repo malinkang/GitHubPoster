@@ -1,12 +1,12 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="github_poster",
-    author="yihong0618",
-    author_email="zouzou0208@gmail.com",
-    url="https://github.com/yihong0618/GitHubPoster",
+    name="github_heatmap",
+    author="malinkang",
+    author_email="linkang.ma@gmail.com",
+    url="https://github.com/malinkang/GitHubPoster",
     license="MIT",
-    version="2.7.2",
+    version="1.0.3",
     description="Make everything a GitHub svg poster and Skyline!",
     packages=find_packages(),
     include_package_data=True,
@@ -34,6 +34,6 @@ setup(
         ],
     },
     entry_points={
-        "console_scripts": ["github_poster = github_poster.cli:main"],
+        "console_scripts": ["github_heatmap = github_heatmap.cli:main"],
     },
 )
