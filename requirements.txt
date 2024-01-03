@@ -1,1 +1,1 @@
--e .[all]
+github_heatmap[all]
