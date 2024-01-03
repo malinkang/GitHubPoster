@@ -117,7 +117,7 @@ def run():
         p.special_number["special_number2"] = args.special_number2
     # the length of this poster
     poster_length = len(p.years) if args.type != "summary" else len(loader.loader_list)
-    p.height = 35 + poster_length * 43
+    p.height = 10 + poster_length * 38
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
     # support different issues, maybe better way

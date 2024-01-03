@@ -38,12 +38,13 @@ class WereadLoader(BaseLoader):
 
     def make_track_dict(self):
         api_data = self.get_api_data()
-        readTimes = dict(sorted(api_data["readTimes"].items(), reverse=True))
-        for k, v in readTimes.items():
-            k = pendulum.from_timestamp(int(k), tz=self.time_zone)
-            self.number_by_date_dict[k.to_date_string()] = round(v / 60.0, 2)
-        for _, v in self.number_by_date_dict.items():
-            self.number_list.append(v)
+        if("readTimes" in api_data):
+            readTimes = dict(sorted(api_data["readTimes"].items(), reverse=True))
+            for k, v in readTimes.items():
+                k = pendulum.from_timestamp(int(k), tz=self.time_zone)
+                self.number_by_date_dict[k.to_date_string()] = round(v / 60.0, 2)
+            for _, v in self.number_by_date_dict.items():
+                self.number_list.append(v)
 
     def get_all_track_data(self):
         self.session.cookies = self.parse_cookie_string(self.weread_cookie)
