@@ -212,7 +212,12 @@ class BaseLoader(ABC):
             action="store_false",
             help="if poster title with type name",
         )
-
+        group.add_argument(
+            "--unit",
+            dest="unit",
+            default="",
+            help="unit",
+        )
         # is_cn here
         group.add_argument(
             "--cn",

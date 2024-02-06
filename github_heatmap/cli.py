@@ -69,7 +69,10 @@ def run():
     type_list = [args.type]
     # for multiple types or year summary
     if args.type in ["multiple", "summary"]:
-        p.units = args.loader.unit
+        if args.unit:
+            p.units = args.unit
+        else:
+            p.units = args.loader.unit
         types_list = args_dict.get("types").split(",")
         # trim drop the spaces
         type_list = [t.replace(" ", "") for t in types_list]
@@ -92,10 +95,16 @@ def run():
             raise ValueError(
                 "No data available for the specified years or type. Please check your user name!"
             )
-        p.units = args.loader.unit
+        if args.unit:
+            p.units = args.unit
+        else:
+            p.units = args.loader.unit
         p.set_tracks(tracks, years, type_list)
     else:
-        p.units = args.loader.unit
+        if args.unit:
+            p.units = args.unit
+        else:
+            p.units = args.loader.unit
         p.set_tracks({}, [to_year], type_list)
 
     # set title

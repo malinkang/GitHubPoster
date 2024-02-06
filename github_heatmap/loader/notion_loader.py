@@ -17,8 +17,8 @@ class NotionLoader(BaseLoader):
         self.number_by_date_dict = defaultdict(int)
         self.notion_token = kwargs.get("notion_token", "")
         self.database_id = kwargs.get("database_id", "")
-        self.prop_name = kwargs.get("prop_name", "")
-
+        self.date_prop_name = kwargs.get("date_prop_name", "")
+        self.value_prop_name = kwargs.get("value_prop_name", "")
     @classmethod
     def add_loader_arguments(cls, parser, optional):
         parser.add_argument(
@@ -34,8 +34,16 @@ class NotionLoader(BaseLoader):
             help="The Notion database id.",
         )
         parser.add_argument(
-            "--prop_name",
-            dest="prop_name",
+            "--date_prop_name",
+            dest="date_prop_name",
+            type=str,
+            default="Datetime",
+            required=optional,
+            help="The database property name which stored the datetime.",
+        )
+        parser.add_argument(
+            "--value_prop_name",
+            dest="value_prop_name",
             type=str,
             default="Datetime",
             required=optional,
@@ -80,9 +88,10 @@ class NotionLoader(BaseLoader):
     def make_track_dict(self):
         data_list = self.get_api_data()
         for result in data_list:
-            dt = result["properties"][self.prop_name]["date"]["start"]
+            dt = result["properties"][self.date_prop_name]["date"]["start"]
+            value = result["properties"][self.value_prop_name]["formula"]["number"]
             date_str = pendulum.parse(dt).to_date_string()
-            self.number_by_date_dict[date_str] += 1
+            self.number_by_date_dict[date_str] = value
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 
