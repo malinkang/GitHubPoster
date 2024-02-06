@@ -81,7 +81,6 @@ class Poster:
         width = self.width
         self.tracks_drawer = drawer
         d = svgwrite.Drawing(output, (f"{width}mm", f"{height}mm"))
-        print(f"width={width} height={height}")
         d.viewbox(0, 0, self.width, height)
         d.add(d.rect((0, 0), (width, height), fill=self.colors["background"]))
         self.__draw_header(d)
