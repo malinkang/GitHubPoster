@@ -739,6 +739,3 @@ python3 -m github_heatmap neodb --neodb_token <token> --mark_type <complete, wis
 谢谢就够了
 
 Just enjoy it
-
-
-python3 -m github_heatmap weread --weread_cookie "RK=KZ0Ew/JFS7; ptcz=cba8e45558c5cab1cccb43896ab8d5980c5506b676460d857e0bf24492a9479f; pgv_pvid=5013319515; wr_theme=dark; wr_gid=213873374; wr_vid=16308016; wr_pf=0; wr_rt=web%40KRlvbLseOMAd_v6b9ls_AL; wr_localvid=79c322606f8d73079ce03da; wr_name=CarveTime; wr_avatar=https%3A%2F%2Fres.weread.qq.com%2Fwravatar%2FWV0016-RnaEL_g5XKTnGxtCRB5EW76%2F0; wr_gender=1; pgv_info=ssid=s8380486135; ptui_loginuin=458832194; uin=o458832194; wr_fp=2548014692; wr_skey=jXkGkS0V"

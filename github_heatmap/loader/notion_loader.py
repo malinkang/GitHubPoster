@@ -87,11 +87,19 @@ class NotionLoader(BaseLoader):
 
     def make_track_dict(self):
         data_list = self.get_api_data()
+        # print(data_list)
         for result in data_list:
-            dt = result["properties"][self.date_prop_name]["date"]["start"]
-            value = result["properties"][self.value_prop_name]["formula"]["number"]
-            date_str = pendulum.parse(dt).to_date_string()
-            self.number_by_date_dict[date_str] = value
+            date = result["properties"][self.date_prop_name]["date"]
+            value = result["properties"][self.value_prop_name]
+            if date and value:
+                dt = date.get("start")
+                type = value.get("type")
+                if(type == "formula" and value.get(type).get("type") == "number"):
+                    value = int(value.get(type).get("number"))
+                
+                date_str = pendulum.parse(dt).to_date_string()
+                print(f"date_str = {date_str} value = {value}")
+                self.number_by_date_dict[date_str] = self.number_by_date_dict.get(date_str,0) + value
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
 
