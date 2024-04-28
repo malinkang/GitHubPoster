@@ -1,9 +1,0 @@
-name = "weread-assets"
-main = "src/index.js"
-compatibility_date = "2024-01-23"
-workers_dev = true
-
-[[routes]]
-pattern = "wereadassets.malinkang.com"
-zone_name = "malinkang.com"
-custom_domain = true
