@@ -4,7 +4,11 @@ from collections import defaultdict
 import svgwrite
 
 from github_heatmap.structures import XY, ValueRange
-
+from github_heatmap.config import (
+    HEAD_FONT_SIZE,
+    MARGIN_LEFT,
+    MARGIN_TOP
+)
 
 class Poster:
     def __init__(self):
@@ -21,9 +25,10 @@ class Poster:
             "special": "#FFFF00",
             "track": "#4DD2FF",
         }
-        self.width = 200
+        self.width = 400
         self.height = 300
         self.years = None
+        self.offset = XY(MARGIN_LEFT,MARGIN_TOP)
         # maybe support more type
         self.tracks_drawer = None
         self.trans = None
@@ -84,7 +89,7 @@ class Poster:
         d.viewbox(0, 0, self.width, height)
         d.add(d.rect((0, 0), (width, height), fill=self.colors["background"]))
         self.__draw_header(d)
-        self.__draw_tracks(d, XY(10, 14))
+        self.__draw_tracks(d, self.offset)
         # for multiple types show
         if self.is_multiple_type:
             self.__draw_footer(d)
@@ -94,9 +99,12 @@ class Poster:
         self.tracks_drawer.draw(d, offset, self.is_summary)
 
     def __draw_header(self, d):
+        self.offset.y += HEAD_FONT_SIZE
         text_color = self.colors["text"]
-        title_style = "font-size:6px; font-family:Arial; font-weight:bold;"
-        d.add(d.text(self.title, insert=(10, 10), fill=text_color, style=title_style))
+        title_style = f"font-size:{HEAD_FONT_SIZE}px; font-family:Arial; font-weight:bold;"
+        d.add(d.text(self.title, insert=(self.offset.x, self.offset.y), fill=text_color, style=title_style))
+     
+
 
     def __draw_footer(self, d):
         self.tracks_drawer.draw_footer(d)

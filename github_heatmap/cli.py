@@ -13,6 +13,15 @@ from github_heatmap.err import DepNotInstalledError
 from github_heatmap.loader import LOADER_DICT
 from github_heatmap.poster import Poster
 from github_heatmap.utils import parse_years, reduce_year_list
+from github_heatmap.config import (
+    HEAD_FONT_SIZE,
+    YEAR_FONT_SIZE,
+    MONTH_FONT_SIZE,
+    DOM_BOX_PADING,
+    DOM_BOX_TUPLE,
+    MARGIN_TOP,
+    MARGIN_LEFT
+)
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
@@ -126,7 +135,15 @@ def run():
         p.special_number["special_number2"] = args.special_number2
     # the length of this poster
     poster_length = len(p.years) if args.type != "summary" else len(loader.loader_list)
-    p.height = 10 + poster_length * 38
+    p.width = MARGIN_LEFT * 2 + (DOM_BOX_PADING + DOM_BOX_TUPLE[0]) * 53
+    p.height = (
+        MARGIN_TOP
+        + HEAD_FONT_SIZE
+        + poster_length
+        * (YEAR_FONT_SIZE + MONTH_FONT_SIZE+DOM_BOX_PADING*3 + (DOM_BOX_PADING + DOM_BOX_TUPLE[0]) * 7)
+    )
+    print(f"高度 = {p.height}")
+    print(f"宽度 = {p.width}")
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
     # support different issues, maybe better way

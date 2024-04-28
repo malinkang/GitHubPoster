@@ -9,6 +9,10 @@ from github_heatmap.config import (
     DOM_BOX_DICT,
     DOM_BOX_TUPLE,
     MONTH_NAMES,
+    YEAR_FONT_SIZE,
+    MONTH_FONT_SIZE,
+    DOM_BOX_PADING,
+    DOM_BOX_RADIUS,
 )
 from github_heatmap.err import BaseDrawError
 from github_heatmap.utils import interpolate_color, make_key_times
@@ -19,10 +23,8 @@ class Drawer:
 
     def __init__(self, p):
         self.poster = p
-        self.year_size = 80 * 3.0 / 80.0
-        self.year_style = f"font-size:{self.year_size}px; font-family:Arial;"
-        self.year_length_style = f"font-size:{80 * 3.0 / 80.0}px; font-family:Arial;"
-        self.month_names_style = "font-size:2.5px; font-family:Arial"
+        self.year_style = f"font-size:{YEAR_FONT_SIZE}px; font-family:Arial;"
+        self.month_names_style = f"font-size:{MONTH_FONT_SIZE}px; font-family:Arial"
 
     @property
     def type_color_dict(self):
@@ -89,7 +91,13 @@ class Drawer:
                     "special"
                 )
             date_title = f"{date_title} {day_tracks} {self.poster.units}"
-        rect = dr.rect((rect_x, rect_y), DOM_BOX_TUPLE, fill=color,rx=0.4, ry=0.4)
+        rect = dr.rect(
+            (rect_x, rect_y),
+            DOM_BOX_TUPLE,
+            fill=color,
+            rx=DOM_BOX_RADIUS,
+            ry=DOM_BOX_RADIUS,
+        )
         if with_animation:
             rect = self.__add_animation(rect, key_times, animate_index)
         rect.set_desc(title=date_title)
@@ -125,7 +133,13 @@ class Drawer:
                     continue
                 dom = dom_tuple[index]
                 color = self.make_color(length_range, num)
-                rect = dr.rect((rect_x, rect_y), dom, fill=color,rx=0.4, ry=0.4)
+                rect = dr.rect(
+                    (rect_x, rect_y),
+                    dom,
+                    fill=color,
+                    rx=DOM_BOX_RADIUS,
+                    ry=DOM_BOX_RADIUS,
+                )
                 date_title = f"{date_title} {num} for {_type}"
                 if with_animation:
                     rect = self.__add_animation(rect, key_times, animate_index)
@@ -156,39 +170,35 @@ class Drawer:
             # change to hours from mins
             year_units = "hours"
         year_length = str(int(year_length)) + f" {year_units}"
+        # 绘制经验
+        offset.y += DOM_BOX_PADING
+        offset.y += YEAR_FONT_SIZE
         dr.add(
             dr.text(
                 f"{year}: {year_length}" if _type is None else f"{_type}",
                 insert=offset.tuple(),
                 fill=self.poster.colors["text"],
-                dominant_baseline="hanging",
                 style=self.year_style,
             )
         )
-
-        # if not self.poster.is_multiple_type:
-        #     dr.add(
-        #         dr.text(
-        #             f"{year_length}",
-        #             insert=(offset.tuple()[0] + 165, offset.tuple()[1] + 5),
-        #             fill=self.poster.colors["text"],
-        #             dominant_baseline="hanging",
-        #             style=self.year_length_style,
-        #         )
-        #     )
-        # add month name up to the poster one by one
-        # because of svg text auto trim the spaces.
+        offset.y += DOM_BOX_PADING
+        offset.y += MONTH_FONT_SIZE
+        size = DOM_BOX_PADING + DOM_BOX_TUPLE[1]
+        # 绘制月份
         for num, name in enumerate(MONTH_NAMES):
             dr.add(
                 dr.text(
                     f"{name}",
-                    insert=(offset.tuple()[0] + 15.5 * num, offset.tuple()[1] + self.year_size +4),
+                    insert=(
+                        offset.x + (53 * size) / 12 * num,
+                        offset.y,
+                    ),
                     fill=self.poster.colors["text"],
                     style=self.month_names_style,
                 )
             )
-
-        rect_x = 10.0
+        offset.y += DOM_BOX_PADING
+        rect_x = offset.x
         animate_index = 1
         year_count, key_times = 0, ""
         if self.poster.with_animation:
@@ -197,17 +207,17 @@ class Drawer:
             key_times = make_key_times(year_count)
 
         # add every day of this year for 53 weeks and per week has 7 days
-        for _ in range(54):
-            rect_y = offset.y + self.year_size + 2
-            for _ in range(7):
+        for index in range(54):
+            # 一个box的大小+间距
+            for week in range(7):
+                """绘制列"""
                 if int(github_rect_day.year) > year:
                     break
-                rect_y += 3.5
+                rect_y = offset.y + size * week
                 date_title = str(github_rect_day)
                 day_tracks = None
                 if date_title in self.poster.tracks:
                     day_tracks = self.poster.tracks[date_title]
-
                     # tricky for may cause animate error
                     if animate_index < len(key_times) - 1:
                         animate_index += 1
@@ -228,8 +238,9 @@ class Drawer:
                 ):
                     dr.add(rect)
                 github_rect_day += datetime.timedelta(1)
-            rect_x += 3.5
-        offset.y += 3.5 * 9 + self.year_size + 1.0
+            rect_x += size
+        # 绘制一年的
+        offset.y += size * 7
 
     def draw(self, dr, offset, is_summary=False):
         if self.poster.tracks is None:

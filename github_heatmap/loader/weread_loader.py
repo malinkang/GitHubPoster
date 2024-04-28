@@ -63,6 +63,7 @@ class WereadLoader(BaseLoader):
         self.session.get(WEREAD_BASE_URL)
         r = self.session.get(WEREAD_HISTORY_URL)
         if not r.ok:
+            print(r.text)
             # need to refresh cookie
             if r.json()["errcode"] == -2012:
                 raise Exception("Cookie过期了请重新设置cookie")

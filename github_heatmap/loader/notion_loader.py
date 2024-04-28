@@ -98,7 +98,6 @@ class NotionLoader(BaseLoader):
                     value = int(value.get(type).get("number"))
                 
                 date_str = pendulum.parse(dt).to_date_string()
-                print(f"date_str = {date_str} value = {value}")
                 self.number_by_date_dict[date_str] = self.number_by_date_dict.get(date_str,0) + value
         for _, v in self.number_by_date_dict.items():
             self.number_list.append(v)
