@@ -155,6 +155,7 @@ class Drawer:
 
     # noinspection PyArgumentList
     def _draw_one_calendar(self, dr, year, offset, _type=None):
+        print(year)
         start_date_weekday, _ = calendar.monthrange(year, 1)
         github_rect_first_day = datetime.date(year, 1, 1)
         # GitHub profile the first day start from the last Monday of the last year
@@ -185,19 +186,8 @@ class Drawer:
         offset.y += MONTH_FONT_SIZE
         size = DOM_BOX_PADING + DOM_BOX_TUPLE[1]
         # 绘制月份
-        for num, name in enumerate(MONTH_NAMES):
-            dr.add(
-                dr.text(
-                    f"{name}",
-                    insert=(
-                        offset.x + (53 * size) / 12 * num,
-                        offset.y,
-                    ),
-                    fill=self.poster.colors["text"],
-                    style=self.month_names_style,
-                )
-            )
-        offset.y += DOM_BOX_PADING
+        # for num, name in enumerate(MONTH_NAMES):
+
         rect_x = offset.x
         animate_index = 1
         year_count, key_times = 0, ""
@@ -207,13 +197,39 @@ class Drawer:
             key_times = make_key_times(year_count)
 
         # add every day of this year for 53 weeks and per week has 7 days
+        month = MONTH_NAMES[0]
         for index in range(54):
+            if index == 0:
+                dr.add(
+                    dr.text(
+                        f"{month}",
+                        insert=(
+                            rect_x,
+                            offset.y,
+                        ),
+                        fill=self.poster.colors["text"],
+                        style=self.month_names_style,
+                    )
+                )
+            if index > 0 and index < 53 and month!=MONTH_NAMES[github_rect_day.month - 1]:
+                month = MONTH_NAMES[github_rect_day.month - 1]
+                dr.add(
+                    dr.text(
+                        f"{month}",
+                        insert=(
+                            rect_x,
+                            offset.y,
+                        ),
+                        fill=self.poster.colors["text"],
+                        style=self.month_names_style,
+                    )
+                )
             # 一个box的大小+间距
             for week in range(7):
                 """绘制列"""
                 if int(github_rect_day.year) > year:
                     break
-                rect_y = offset.y + size * week
+                rect_y = offset.y + size * week + DOM_BOX_PADING
                 date_title = str(github_rect_day)
                 day_tracks = None
                 if date_title in self.poster.tracks:

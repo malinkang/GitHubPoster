@@ -739,5 +739,3 @@ python3 -m github_heatmap neodb --neodb_token <token> --mark_type <complete, wis
 谢谢就够了
 
 Just enjoy it
-
-python3 -m github_heatmap notion  --notion_token "secret_xvMkQzLkCRtZL478L8MhvLdIDOxicjjSUm9U9voAwbb" --database_id "cf6359306f94456da01908af73191a61" --date_prop_name "时间" --value_prop_name "金币" --unit "金币" --year 2024 --me "哈哈哈" --without-type-name --with-animation --background-color=#FFFFFF --track-color=#f44336 --special-color1=#ffd966 --special-color2=#549F57 --dom-color=#EBEDF0 --text-color=#000000

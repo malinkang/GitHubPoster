@@ -96,7 +96,8 @@ class NotionLoader(BaseLoader):
                 type = value.get("type")
                 if(type == "formula" and value.get(type).get("type") == "number"):
                     value = int(value.get(type).get("number"))
-                
+                elif(type== "rollup" and value.get(type).get("type") == "number"):
+                    value = int(value.get(type).get("number"))
                 date_str = pendulum.parse(dt).to_date_string()
                 self.number_by_date_dict[date_str] = self.number_by_date_dict.get(date_str,0) + value
         for _, v in self.number_by_date_dict.items():

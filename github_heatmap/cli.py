@@ -142,8 +142,6 @@ def run():
         + poster_length
         * (YEAR_FONT_SIZE + MONTH_FONT_SIZE+DOM_BOX_PADING*3 + (DOM_BOX_PADING + DOM_BOX_TUPLE[0]) * 7)
     )
-    print(f"高度 = {p.height}")
-    print(f"宽度 = {p.width}")
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)
     # support different issues, maybe better way
