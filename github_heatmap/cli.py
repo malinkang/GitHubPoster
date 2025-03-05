@@ -99,11 +99,11 @@ def run():
 
     if args.type not in ["multiple", "summary"]:
         tracks, years = loader.get_all_track_data()
-        years = reduce_year_list(years, tracks)
-        if not years:  # check to handle empty year lists
-            raise ValueError(
-                "No data available for the specified years or type. Please check your user name!"
-            )
+        # years = reduce_year_list(years, tracks)
+        # if not years:  # check to handle empty year lists
+        #     raise ValueError(
+        #         "No data available for the specified years or type. Please check your user name!"
+        #     )
         if args.unit:
             p.units = args.unit
         else:

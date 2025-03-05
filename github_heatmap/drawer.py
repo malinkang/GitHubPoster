@@ -186,8 +186,6 @@ class Drawer:
         offset.y += MONTH_FONT_SIZE
         size = DOM_BOX_PADING + DOM_BOX_TUPLE[1]
         # 绘制月份
-        # for num, name in enumerate(MONTH_NAMES):
-
         rect_x = offset.x
         animate_index = 1
         year_count, key_times = 0, ""
