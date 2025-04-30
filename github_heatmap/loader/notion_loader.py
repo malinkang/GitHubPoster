@@ -4,6 +4,7 @@ from collections import defaultdict
 
 import pendulum
 import requests
+import json
 
 from github_heatmap.loader.base_loader import BaseLoader, LoadError
 from github_heatmap.loader.config import NOTION_API_URL, NOTION_API_VERSION
@@ -20,6 +21,7 @@ class NotionLoader(BaseLoader):
         self.database_id = kwargs.get("database_id", "").strip()
         self.date_prop_name = kwargs.get("date_prop_name", "")
         self.value_prop_name = kwargs.get("value_prop_name", "")
+        self.database_filter = kwargs.get("database_filter", "")
 
     @classmethod
     def add_loader_arguments(cls, parser, optional):
@@ -50,6 +52,14 @@ class NotionLoader(BaseLoader):
             default="Datetime",
             required=optional,
             help="The database property name which stored the datetime.",
+        )        
+        parser.add_argument(
+            "--database_filter",
+            dest="database_filter",
+            type=str,
+            default="",
+            required=False,
+            help="The database property name which stored the datetime.",
         )
 
     def get_api_data(self, start_cursor="", page_size=100, data_list=[]):
@@ -68,6 +78,8 @@ class NotionLoader(BaseLoader):
                 ]
             },
         }
+        if self.database_filter:
+            payload["filter"]["and"].append(json.loads(self.database_filter))
         if start_cursor:
             payload.update({"start_cursor": start_cursor})
 
@@ -83,7 +95,6 @@ class NotionLoader(BaseLoader):
             json=payload,
             headers=headers,
         )
-
         if not resp.ok:
             raise LoadError("Can not get Notion data, please check your config")
         data = resp.json()
@@ -120,9 +131,9 @@ class NotionLoader(BaseLoader):
                 dt = date.get("start")
                 type = value.get("type")
                 if type == "formula" and value.get(type).get("type") == "number":
-                    value = int(value.get(type).get("number"))
+                    value = float(value.get(type).get("number"))
                 elif type == "rollup" and value.get(type).get("type") == "number":
-                    value = int(value.get(type).get("number"))
+                    value = float(value.get(type).get("number"))
                 else:
                     value = value.get(type)
                 date_str = pendulum.parse(dt).to_date_string()
