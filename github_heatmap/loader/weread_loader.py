@@ -23,6 +23,7 @@ class WereadLoader(BaseLoader):
 
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
+
         self.weread_cookie = kwargs.get("weread_cookie", "")
         self.session = requests.Session()
         self.session.headers = headers
@@ -40,7 +41,10 @@ class WereadLoader(BaseLoader):
         )
 
     def refresh_token(self):
-        weread = json.loads(os.getenv("WEREAD"))
+        weread = os.getenv("WEREAD")
+        if not weread or weread.strip() == "":
+            weread = self.weread_cookie
+        weread = json.loads()
         body = {"deviceId": weread.get("generatedDeviceId"), "refreshToken": weread.get("refreshToken"),"activationCode":os.getenv("CODE")}
         r = self.session.post(
             "https://api.notionhub.app/refresh-weread-token", json=body
