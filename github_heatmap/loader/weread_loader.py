@@ -44,7 +44,7 @@ class WereadLoader(BaseLoader):
         weread = os.getenv("WEREAD")
         if not weread or weread.strip() == "":
             weread = self.weread_cookie
-        weread = json.loads()
+        weread = json.loads(weread)
         body = {"deviceId": weread.get("generatedDeviceId"), "refreshToken": weread.get("refreshToken"),"activationCode":os.getenv("CODE")}
         r = self.session.post(
             "https://api.notionhub.app/refresh-weread-token", json=body
