@@ -6,14 +6,14 @@ setup(
     author_email="linkang.ma@gmail.com",
     url="https://github.com/malinkang/GitHubPoster",
     license="MIT",
-    version="1.3.4",
+    version="1.3.6",
     description="Make everything a GitHub svg poster and Skyline!",
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
         "requests",
         "svgwrite",
-        "pendulum==3.0.0",
+        "pendulum==3.1.0",
         "colour",
     ],
     extras_require={
