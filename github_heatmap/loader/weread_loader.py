@@ -41,13 +41,10 @@ class WereadLoader(BaseLoader):
         )
 
     def refresh_token(self):
-        weread = os.getenv("WEREAD")
-        if not weread or weread.strip() == "":
-            weread = self.weread_cookie
-        weread = json.loads(weread)
-        body = {"deviceId": weread.get("generatedDeviceId"), "refreshToken": weread.get("refreshToken"),"activationCode":os.getenv("CODE")}
+        github_repo_env = os.getenv('REPOSITORY')
+        body = {'url': f"https://github.com/{github_repo_env}","token":os.getenv("TOKEN")}
         r = self.session.post(
-            "https://api.notionhub.app/refresh-weread-token", json=body
+            "https://api.notionhub.app/refresh-weread-token/v2", json=body
         )
         if r.ok:
             response_data = r.json()
@@ -57,6 +54,7 @@ class WereadLoader(BaseLoader):
                 self.session.headers.update({"vid": str(vid), "accessToken": accessToken})
         else:
             print("Failed to refresh token")
+       
     
     def get_api_data(self):
         r = self.session.get(WEREAD_HISTORY_URL)
