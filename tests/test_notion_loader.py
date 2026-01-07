@@ -1,3 +1,6 @@
+import requests
+
+from github_heatmap.loader import notion_loader
 from github_heatmap.loader.notion_loader import NotionLoader
 
 
@@ -91,3 +94,42 @@ def test_notion_loader_extract_property_text_variants():
         },
     }
     assert NotionLoader._extract_property_text(rollup_array) == "Note, Alice, Bob"
+
+
+def test_notion_loader_handles_http_error(monkeypatch):
+    loader = build_loader()
+
+    class DummyResp:
+        ok = False
+        status_code = 404
+
+        @staticmethod
+        def json():
+            return {"object": "error"}
+
+    monkeypatch.setattr(
+        notion_loader.requests, "post", lambda *args, **kwargs: DummyResp()
+    )
+
+    tracks, years = loader.get_all_track_data()
+
+    assert years == [2024]
+    assert tracks
+    assert all(value == 0 for value in tracks.values())
+    assert loader.number_list
+
+
+def test_notion_loader_handles_request_exception(monkeypatch):
+    loader = build_loader()
+
+    def fake_post(*args, **kwargs):
+        raise requests.RequestException("boom")
+
+    monkeypatch.setattr(notion_loader.requests, "post", fake_post)
+
+    tracks, years = loader.get_all_track_data()
+
+    assert years == [2024]
+    assert tracks
+    assert all(value == 0 for value in tracks.values())
+    assert loader.number_list

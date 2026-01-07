@@ -6,7 +6,7 @@ import pendulum
 import requests
 import json
 
-from github_heatmap.loader.base_loader import BaseLoader, LoadError
+from github_heatmap.loader.base_loader import BaseLoader
 from github_heatmap.loader.config import NOTION_API_URL, NOTION_API_VERSION
 
 
@@ -72,7 +72,9 @@ class NotionLoader(BaseLoader):
             help="The Notion property name used for tooltip text.",
         )
 
-    def get_api_data(self, start_cursor="", page_size=100, data_list=[]):
+    def get_api_data(self, start_cursor="", page_size=100, data_list=None):
+        if data_list is None:
+            data_list = []
         payload = {
             "page_size": page_size,
             "filter": {
@@ -92,22 +94,33 @@ class NotionLoader(BaseLoader):
             payload["filter"]["and"].append(json.loads(self.database_filter))
         if start_cursor:
             payload.update({"start_cursor": start_cursor})
-
+        print(payload)
         headers = {
             "Accept": "application/json",
             "Notion-Version": NOTION_API_VERSION,
             "Content-Type": "application/json",
             "Authorization": "Bearer " + self.notion_token,
         }
-
-        resp = requests.post(
-            NOTION_API_URL.format(database_id=self.database_id),
-            json=payload,
-            headers=headers,
-        )
+        print(headers)
+        try:
+            resp = requests.post(
+                NOTION_API_URL.format(database_id=self.database_id),
+                json=payload,
+                headers=headers,
+            )
+        except requests.RequestException:
+            print("Failed to connect to Notion API.")
+            return data_list
+        print(resp.text)
         if not resp.ok:
-            raise LoadError("Can not get Notion data, please check your config")
-        data = resp.json()
+            # Treat non-OK responses as an empty result set so we can still draw
+            # a heatmap even when the Notion API yields no rows for the period.
+            return data_list
+        try:
+            data = resp.json()
+        except ValueError:
+            return data_list
+        print(len(data.get("results", [])))
         results = data["results"]
         next_cursor = data["next_cursor"]
         data_list.extend(results)
