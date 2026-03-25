@@ -12,9 +12,9 @@ jobs:
       matrix:
         python-version: ['3.8', '3.9']
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Set Variables
@@ -24,7 +24,7 @@ jobs:
           echo "PY=$(python -c 'import hashlib, sys;print(hashlib.sha256(sys.version.encode()+sys.executable.encode()).hexdigest())')" >> $GITHUB_OUTPUT
           echo "PIP_CACHE=$(pip cache dir)" >> $GITHUB_OUTPUT
       - name: Cache PIP
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: ${{ steps.set_variables.outputs.PIP_CACHE }}
           key: ${{ runner.os }}-pip-${{ steps.set_variables.outputs.PY }}
@@ -33,7 +33,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
       - name: Run lint
-        uses: pre-commit/action@v2.0.0
+        uses: pre-commit/action@v3.0.1
       - name: Run test
         run: pytest tests/
       - name: Run running tests
