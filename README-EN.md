@@ -375,19 +375,19 @@ Get Notion `Internal Integration Token`(notion_token), see [here](https://develo
 2. Click 'New integration' to create a new token
 3. You can see `Internal Integration Token` below `Secrets` after submit
 
-Get Notion Database ID(database_id), see [here](https://developers.notion.com/docs/working-with-databases#adding-pages-to-a-database) for more details.
+Get the Notion data source ID (`data_source_id`), see [here](https://developers.notion.com/reference/query-a-data-source) for more details.
 
-1. Open the database as a full page in Notion
-2. Use the `Share` menu to `Copy link`, and you'll get a URL looks like `https://www.notion.so/{workspace_name}/{database_id}?v={view_id}`
-3. The part that corresponds to `{database_id}` is the ID of your Notion Database
+1. Open the target data source in Notion
+2. Use the `Share` menu to `Copy link`, and you'll get a URL that looks like `https://www.notion.so/{workspace_name}/{data_source_id}?v={view_id}`
+3. The part that corresponds to `{data_source_id}` is the ID of your Notion data source
 
-Note：The database need a property which type is `Date`, the value of it will be used to generate the poster.
-The name of the date property should be set as option `prop_name`'s value，default value is `Datetime`
+Note: the data source should include a `Date` property for the activity date and a number/formula/rollup property for the heatmap value.
+Pass those names with `--date_prop_name` and `--value_prop_name`.
 
 ```
-python3 -m github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+python3 -m github_heatmap notion --notion_token="your notion_token" --data_source_id="your data_source_id" --date_prop_name="your date_prop_name" --value_prop_name="your value_prop_name"
 or
-github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+github_heatmap notion --notion_token="your notion_token" --data_source_id="your data_source_id" --date_prop_name="your date_prop_name" --value_prop_name="your value_prop_name"
 ```
 
 </details>

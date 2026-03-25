@@ -435,18 +435,18 @@ github_heatmap nike --nike_refresh_token="your nike_refresh_token" --year 2012-2
 2. 点击「New integration」添加基础信息后，创建新的 Token
 3. 提交后可以看到 `Secrets` 下的 `Internal Integration Token`
 
-获取用于生成 Poster 的 Notion 数据库 ID(database_id)，查看[官方文档](https://developers.notion.com/docs/working-with-databases#adding-pages-to-a-database)获取更多信息。
+获取用于生成 Poster 的 Notion 数据源 ID(`data_source_id`)，查看[官方文档](https://developers.notion.com/reference/query-a-data-source)获取更多信息。
 
-1. 以全屏页面打开数据库
-2. 复制页面链接，链接组成应该是 `https://www.notion.so/{workspace_name}/{database_id}?v={view_id}` 这样的
-3. 其中 `{database_id}` 部分即为数据库 ID
+1. 在 Notion 中打开对应的数据源页面
+2. 复制页面链接，链接一般类似 `https://www.notion.so/{workspace_name}/{data_source_id}?v={view_id}`
+3. 其中 `{data_source_id}` 部分即为数据源 ID
 
-注：数据库需要添加一个属性类型为 `Date` 的日期属性，该属性的值将作为生成 Poster 的日期数据使用。在生成时需将该日期属性的名称作为选项 `prop_name` 的值，默认值为 `Datetime`
+注：数据源需要至少包含一个类型为 `Date` 的属性作为日期字段，以及一个数值/公式/rollup 属性作为热力图统计值。生成时通过 `--date_prop_name` 和 `--value_prop_name` 指定字段名。
 
 ```
-python3 -m github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+python3 -m github_heatmap notion --notion_token="your notion_token" --data_source_id="your data_source_id" --date_prop_name="your date_prop_name" --value_prop_name="your value_prop_name"
 or
-github_heatmap notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+github_heatmap notion --notion_token="your notion_token" --data_source_id="your data_source_id" --date_prop_name="your date_prop_name" --value_prop_name="your value_prop_name"
 ```
 
 </details>
