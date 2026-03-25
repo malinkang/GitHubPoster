@@ -111,7 +111,7 @@ class NotionLoader(BaseLoader):
         except requests.RequestException:
             print("Failed to connect to Notion API.")
             return data_list
-        print(resp.text)
+        print(getattr(resp, "text", ""))
         if not resp.ok:
             # Treat non-OK responses as an empty result set so we can still draw
             # a heatmap even when the Notion API yields no rows for the period.
