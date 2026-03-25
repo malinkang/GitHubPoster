@@ -7,22 +7,22 @@ import os
 import sys
 
 from github_heatmap.circluar_drawer import CircularDrawer
-from github_heatmap.config import TYPE_INFO_DICT
+from github_heatmap.config import (
+    DOM_BOX_PADING,
+    DOM_BOX_TUPLE,
+    GITHUB_LEVEL_COLORS,
+    HEAD_FONT_SIZE,
+    MARGIN_LEFT,
+    MARGIN_TOP,
+    MONTH_FONT_SIZE,
+    TYPE_INFO_DICT,
+    YEAR_FONT_SIZE,
+)
 from github_heatmap.drawer import Drawer
 from github_heatmap.err import DepNotInstalledError
 from github_heatmap.loader import LOADER_DICT
 from github_heatmap.poster import Poster
 from github_heatmap.utils import build_level_colors, parse_years, reduce_year_list
-from github_heatmap.config import (
-    GITHUB_LEVEL_COLORS,
-    HEAD_FONT_SIZE,
-    YEAR_FONT_SIZE,
-    MONTH_FONT_SIZE,
-    DOM_BOX_PADING,
-    DOM_BOX_TUPLE,
-    MARGIN_TOP,
-    MARGIN_LEFT
-)
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
@@ -166,7 +166,12 @@ def run():
         MARGIN_TOP
         + HEAD_FONT_SIZE
         + poster_length
-        * (YEAR_FONT_SIZE + MONTH_FONT_SIZE+DOM_BOX_PADING*3 + (DOM_BOX_PADING + DOM_BOX_TUPLE[0]) * 7)
+        * (
+            YEAR_FONT_SIZE
+            + MONTH_FONT_SIZE
+            + DOM_BOX_PADING * 3
+            + (DOM_BOX_PADING + DOM_BOX_TUPLE[0]) * 7
+        )
     )
     if not os.path.exists(OUT_FOLDER):
         os.mkdir(OUT_FOLDER)

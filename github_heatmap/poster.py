@@ -1,14 +1,12 @@
 """Create a poster from track data."""
+
 from collections import defaultdict
 
 import svgwrite
 
+from github_heatmap.config import HEAD_FONT_SIZE, MARGIN_LEFT, MARGIN_TOP
 from github_heatmap.structures import XY, ValueRange
-from github_heatmap.config import (
-    HEAD_FONT_SIZE,
-    MARGIN_LEFT,
-    MARGIN_TOP
-)
+
 
 class Poster:
     def __init__(self):
@@ -28,7 +26,7 @@ class Poster:
         self.width = 400
         self.height = 300
         self.years = None
-        self.offset = XY(MARGIN_LEFT,MARGIN_TOP)
+        self.offset = XY(MARGIN_LEFT, MARGIN_TOP)
         # maybe support more type
         self.tracks_drawer = None
         self.trans = None
@@ -107,10 +105,17 @@ class Poster:
     def __draw_header(self, d):
         self.offset.y += HEAD_FONT_SIZE
         text_color = self.colors["text"]
-        title_style = f"font-size:{HEAD_FONT_SIZE}px; font-family:Arial; font-weight:bold;"
-        d.add(d.text(self.title, insert=(self.offset.x, self.offset.y), fill=text_color, style=title_style))
-     
-
+        title_style = (
+            f"font-size:{HEAD_FONT_SIZE}px; font-family:Arial; font-weight:bold;"
+        )
+        d.add(
+            d.text(
+                self.title,
+                insert=(self.offset.x, self.offset.y),
+                fill=text_color,
+                style=title_style,
+            )
+        )
 
     def __draw_footer(self, d):
         self.tracks_drawer.draw_footer(d)

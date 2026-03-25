@@ -1,10 +1,10 @@
-from datetime import datetime, timedelta
+import json
 import time
 from collections import defaultdict
+from datetime import datetime, timedelta
 
 import pendulum
 import requests
-import json
 
 from github_heatmap.loader.base_loader import BaseLoader
 from github_heatmap.loader.config import NOTION_API_URL, NOTION_API_VERSION
@@ -54,7 +54,7 @@ class NotionLoader(BaseLoader):
             default="Datetime",
             required=optional,
             help="The database property name which stored the datetime.",
-        )        
+        )
         parser.add_argument(
             "--database_filter",
             dest="database_filter",
@@ -211,7 +211,9 @@ class NotionLoader(BaseLoader):
                 [p.get("name") or p.get("id", "") for p in item.get("people", [])]
             ).strip()
         if item_type == "relation":
-            return ", ".join([r.get("id", "") for r in item.get("relation", [])]).strip()
+            return ", ".join(
+                [r.get("id", "") for r in item.get("relation", [])]
+            ).strip()
         if item_type == "date":
             return cls._format_date(item.get("date", {}))
         if item_type in ("url", "email", "phone_number"):
@@ -274,7 +276,9 @@ class NotionLoader(BaseLoader):
         if prop_type == "date":
             return cls._format_date(prop.get("date", {}))
         if prop_type == "relation":
-            return ", ".join([r.get("id", "") for r in prop.get("relation", [])]).strip()
+            return ", ".join(
+                [r.get("id", "") for r in prop.get("relation", [])]
+            ).strip()
         if prop_type == "files":
             texts = []
             for file_obj in prop.get("files", []):
@@ -310,7 +314,9 @@ class NotionLoader(BaseLoader):
             if rollup_type == "date":
                 return cls._format_date(rollup.get("date", {}))
             if rollup_type == "array":
-                texts = [cls._extract_rollup_item(item) for item in rollup.get("array", [])]
+                texts = [
+                    cls._extract_rollup_item(item) for item in rollup.get("array", [])
+                ]
                 texts = [text for text in texts if text]
                 return ", ".join(texts)
         return ""

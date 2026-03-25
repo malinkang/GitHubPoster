@@ -46,10 +46,7 @@ def test_notion_loader_make_track_dict_with_tooltips():
     loader.make_track_dict()
 
     assert loader.number_by_date_dict["2024-01-01"] == 7
-    assert (
-        loader.tooltip_by_date_dict["2024-01-01"]
-        == "Study\nRead, Write"
-    )
+    assert loader.tooltip_by_date_dict["2024-01-01"] == "Study\nRead, Write"
 
 
 def test_notion_loader_extract_property_text_variants():
