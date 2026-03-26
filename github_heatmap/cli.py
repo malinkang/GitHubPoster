@@ -143,6 +143,16 @@ def run():
             for child_loader in loader.loader_list
         }
 
+    # explicit level thresholds override quartile calculation
+    if args.level_thresholds:
+        p.level_thresholds = tuple(float(v) for v in args.level_thresholds.split(","))
+        p.use_github_level_mapping = True
+
+    # explicit level colors override computed colors
+    if args.level_colors:
+        p.level_colors = [c.strip() for c in args.level_colors.split(",")]
+        p.use_github_level_mapping = True
+
     # set title
     # we don't know issue content so use name
     p.title = (

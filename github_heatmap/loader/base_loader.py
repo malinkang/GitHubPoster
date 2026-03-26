@@ -239,6 +239,18 @@ class BaseLoader(ABC):
             action="store_true",
             help="Use raw value (1-4) as level directly, skip quartile calculation",
         )
+        group.add_argument(
+            "--level-thresholds",
+            dest="level_thresholds",
+            default="",
+            help="Explicit level thresholds (comma-separated, e.g. '360,450,99999'), overrides quartile calculation",
+        )
+        group.add_argument(
+            "--level-colors",
+            dest="level_colors",
+            default="",
+            help="Explicit level colors (comma-separated hex, e.g. '#E74C3C,#F1C40F,#2ECC71,#2ECC71'), overrides computed colors",
+        )
         # special here
         group.add_argument(
             "--stand-with-ukraine",
