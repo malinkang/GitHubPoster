@@ -19,9 +19,9 @@ class NotionLoader(BaseLoader):
     def __init__(self, from_year, to_year, _type, **kwargs):
         super().__init__(from_year, to_year, _type)
         self.number_by_date_dict = self.generate_date_dict(from_year, to_year)
-        self.notion_token = kwargs.get("notion_token", "").strip()
-        self.data_source_id = kwargs.get("data_source_id", "").strip()
-        deprecated_database_id = kwargs.get("database_id", "").strip()
+        self.notion_token = (kwargs.get("notion_token") or "").strip()
+        self.data_source_id = (kwargs.get("data_source_id") or "").strip()
+        deprecated_database_id = (kwargs.get("database_id") or "").strip()
         if deprecated_database_id and not self.data_source_id:
             warnings.warn(
                 "--database_id is deprecated; use --data_source_id instead.",
@@ -29,10 +29,10 @@ class NotionLoader(BaseLoader):
                 stacklevel=2,
             )
             self.data_source_id = deprecated_database_id
-        self.date_prop_name = kwargs.get("date_prop_name", "")
-        self.value_prop_name = kwargs.get("value_prop_name", "")
-        self.data_source_filter = kwargs.get("data_source_filter", "")
-        deprecated_database_filter = kwargs.get("database_filter", "")
+        self.date_prop_name = kwargs.get("date_prop_name") or ""
+        self.value_prop_name = kwargs.get("value_prop_name") or ""
+        self.data_source_filter = kwargs.get("data_source_filter") or ""
+        deprecated_database_filter = kwargs.get("database_filter") or ""
         if deprecated_database_filter and not self.data_source_filter:
             warnings.warn(
                 "--database_filter is deprecated; use --data_source_filter instead.",
@@ -40,7 +40,7 @@ class NotionLoader(BaseLoader):
                 stacklevel=2,
             )
             self.data_source_filter = deprecated_database_filter
-        self.tooltip_prop_name = kwargs.get("tooltip_prop_name", "").strip()
+        self.tooltip_prop_name = (kwargs.get("tooltip_prop_name") or "").strip()
         self.tooltip_by_date_dict = defaultdict(list)
 
     @classmethod
