@@ -6,7 +6,7 @@ setup(
     author_email="linkang.ma@gmail.com",
     url="https://github.com/malinkang/GitHubPoster",
     license="MIT",
-    version="2.0.0",
+    version="2.1.0",
     description="Make everything a GitHub svg poster and Skyline!",
     packages=find_packages(),
     include_package_data=True,

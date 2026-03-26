@@ -77,7 +77,7 @@ class Drawer:
         return self.poster.level_thresholds
 
     def _make_github_level_color(self, length, type_name=None):
-        level = resolve_github_level(length, self._resolve_level_thresholds(type_name))
+        level = resolve_github_level(length, self._resolve_level_thresholds(type_name), self.poster.use_raw_level)
         if level == 0:
             return self.poster.colors.get("dom")
         return self.poster.level_colors[level - 1]

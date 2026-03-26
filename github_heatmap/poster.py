@@ -38,6 +38,7 @@ class Poster:
         self.level_thresholds = ()
         self.level_thresholds_by_type = {}
         self.use_github_level_mapping = True
+        self.use_raw_level = False
 
         # for year summary
         self.is_summary = False

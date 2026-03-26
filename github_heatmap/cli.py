@@ -76,6 +76,7 @@ def run():
     }
     p.level_colors = level_colors
     p.use_github_level_mapping = not (args.special_number1 or args.special_number2)
+    p.use_raw_level = args.use_raw_level
 
     p.tooltip_template = args.tooltip_template or None
 

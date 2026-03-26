@@ -233,6 +233,12 @@ class BaseLoader(ABC):
             action="store_true",
             help="if account is CN",
         )
+        group.add_argument(
+            "--use-raw-level",
+            dest="use_raw_level",
+            action="store_true",
+            help="Use raw value (1-4) as level directly, skip quartile calculation",
+        )
         # special here
         group.add_argument(
             "--stand-with-ukraine",
