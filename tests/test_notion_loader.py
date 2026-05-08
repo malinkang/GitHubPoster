@@ -1,4 +1,6 @@
 import pytest
+
+from notionhub.client import NOTION_VERSION
 import requests
 
 from github_heatmap.loader import notion_loader
@@ -155,7 +157,7 @@ def test_notion_loader_queries_data_source_endpoint(monkeypatch):
     loader.get_api_data()
 
     assert captured["url"].endswith("/v1/data_sources/ds/query")
-    assert captured["headers"]["Notion-Version"] == "2026-03-11"
+    assert captured["headers"]["Notion-Version"] == NOTION_VERSION
     assert captured["json"]["filter"]["and"][0]["property"] == "Date"
 
 

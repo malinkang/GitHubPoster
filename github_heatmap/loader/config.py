@@ -1,5 +1,7 @@
 from collections import namedtuple
 
+from notionhub.client import NOTION_VERSION
+
 # China timezone if you are from others please change this
 TIME_ZONE = "Asia/Shanghai"
 
@@ -116,7 +118,7 @@ BBDC_API_URL = "https://learnywhere.cn/bb/dashboard/profile/search?userId={user_
 
 # Notion
 NOTION_API_URL = "https://api.notion.com/v1/data_sources/{data_source_id}/query"
-NOTION_API_VERSION = "2026-03-11"
+NOTION_API_VERSION = NOTION_VERSION
 
 # Weread
 WEREAD_BASE_URL = "https://weread.qq.com/"
